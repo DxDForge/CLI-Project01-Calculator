@@ -29,70 +29,61 @@ while (true) {
     double b  =readNumber('Enter 2nd  Number:');
     double additionValue =  op.addition(a, b);
     print('Addition is : $additionValue');
-    history.add(History(a, b, additionValue));
+    history.add(History(a, b,'+', additionValue));
       
       break;
     case '2':
-    stdout.writeln('Enter 1st Number:');
-    double a = double.tryParse(stdin.readLineSync()!)!;
-     stdout.writeln('Enter 2nd  Number:');
-    double b  = double.tryParse(stdin.readLineSync()!)!;
-    double substratingValue =  op.substraction(a, b);
-        print('Addition is : $substratingValue');
-        // history.add(substratingValue);
+     double a =readNumber('Enter 1st number');
+    double b  =readNumber('Enter 2nd  Number:');
+    double subtractValue =  op.substraction(a, b);
+    print('subtractValue is : $subtractValue');
+    history.add(History(a, b,'-', subtractValue));
     
       break;
         case '3':
-    stdout.writeln('Enter 1st Number:');
-    double a = double.tryParse(stdin.readLineSync()!)!;
-     stdout.writeln('Enter 2nd  Number:');
-    double b  = double.tryParse(stdin.readLineSync()!)!;
-    double multiplication =  op.multiplication(a, b);
-     print('Addition is : $multiplication');
-    // history.add(multiplication);
+  double a =readNumber('Enter 1st number');
+    double b  =readNumber('Enter 2nd  Number:');
+    double multiplicationValue =  op.multiplication(a, b);
+    print('multiplicationValue is : $multiplicationValue');
+    history.add(History(a, b,'*', multiplicationValue));
     
       break;
       
     case '4':
-    stdout.writeln('Enter 1st Number:');
-    double a = double.tryParse(stdin.readLineSync()!)!;
-     stdout.writeln('Enter 2nd  Number:');
-    double b  = double.tryParse(stdin.readLineSync()!)!;
-    double division =  op.division(a, b);
-    print('Addition is : $division');
-    // history.add(division);
+  double a =readNumber('Enter 1st number');
+    double b  =readNumber('Enter 2nd  Number:');
+    double divisionValue =  op.division(a, b);
+    print('divisionValue is : $divisionValue');
+    history.add(History(a, b,'/', divisionValue));
     
       
       break;
           case '5':
-    stdout.writeln('Enter 1st Number:');
-    double a = double.tryParse(stdin.readLineSync()!)!;
-     stdout.writeln('Enter 2nd  Number:');
-    double b  = double.tryParse(stdin.readLineSync()!)!;
-    num  power =  op.power(a, b);
-    print('Addition is : $power');
+   double a =readNumber('Enter 1st number');
+    double b  =readNumber('Enter 2nd  Number:');
+    num powerValue =  op.power(a, b);
+    print('powerValue is : $powerValue');
+    history.add(History(a, b,'^', powerValue));
 
     // history.add(power);
     
       
       break;
           case '6':
-       stdout.writeln('Enter 1st Number:');
-    double a = double.tryParse(stdin.readLineSync()!)!;
+    double a = readNumber('Enter number to make Square');
     //  stdout.writeln('Enter 2nd  Number:');
     // double b  = double.parse(stdin.readLineSync()!);
     num  square =  op.square(a);
     print('Addition is : $square');
 
-    // history.add(square);
+  history.add(History(a,2,'^', square));
     
       
       break;
           case '7':
+          print('=== HIstory ---');
           for(int i=0;i<history.length;i++){
-            print(history[i].numberOne);
-            print(history[i].numberTwo??'');
-            print(history[i].result);
+            print('$i. ${history[i].numberOne} ${history[i].operator} ${history[i].numberTwo} =  ${history[i].result}');
           }
       
       break;
@@ -171,9 +162,11 @@ double multiplication = a*b;
 }}
 
 // making a history data model to store it
+// i can improve the class by adding the operation name and the operator sign and etc
 class History{
   double numberOne;
   double? numberTwo;
-  double result;
-  History(this.numberOne,this.numberTwo,this.result);
+  String operator;
+  num result;
+  History(this.numberOne,this.numberTwo,this.operator,this.result);
 }
